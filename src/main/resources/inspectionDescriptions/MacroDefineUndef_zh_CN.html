@@ -1,0 +1,33 @@
+<html lang="zh-CN">
+<body>
+<p>
+    检查 C/C++ 宏定义是否缺少对应的 #undef 指令。
+</p>
+<p>
+    此检查有助于维护干净的宏使用，确保每个 #define 宏都有匹配的 #undef 指令。
+    这对于头文件特别重要，可以防止宏污染不同的编译单元。
+</p>
+<p>
+    问题代码示例：
+</p>
+<pre><code>
+#define MAX_SIZE 100
+// ... 使用 MAX_SIZE 的代码 ...
+// 缺少: #undef MAX_SIZE
+</code></pre>
+<p>
+    正确代码示例：
+</p>
+<pre><code>
+#define MAX_SIZE 100
+// ... 使用 MAX_SIZE 的代码 ...
+#undef MAX_SIZE
+</code></pre>
+<!-- tooltip end -->
+<p>此注释后的文本仅在检查器设置中显示。</p>
+<p>
+    要配置此检查器，请转到
+    <a href="settings://preferences.inspections?MacroDefineUndef">设置 | 编辑器 | 检查 | 宏定义检查</a>
+</p>
+</body>
+</html>
