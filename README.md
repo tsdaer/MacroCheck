@@ -1,5 +1,5 @@
 ## License
 
-Apache 2.0 © [Carl-Robert Linnupuu][portfolio]
+Apache 2.0 © [tsdaer][portfolio]
 
 [portfolio]: https://www.honkai-rts.com

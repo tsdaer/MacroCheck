@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "core"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -24,6 +24,7 @@ dependencies {
       // Add necessary plugin dependencies for compilation here, example:
       // bundledPlugin("com.intellij.java")
     }
+
 }
 
 intellijPlatform {
@@ -35,6 +36,15 @@ intellijPlatform {
         changeNotes = """
             Initial version
         """.trimIndent()
+    }
+
+    signing{
+        privateKeyFile = file("key/private.pem")
+        certificateChainFile = file("key/chain.crt")
+        password.set(providers.environmentVariable("JETBRAINS_PRIVATE_KEY_PASSWORD"))
+    }
+    publishing{
+        token.set(providers.environmentVariable("JETBRAINS_PUBLISH_TOKEN"))
     }
 }
 
