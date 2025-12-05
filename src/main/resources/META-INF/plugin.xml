@@ -1,0 +1,41 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>core.MacroCheck</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>MacroCheck</name>
+
+    <!-- 添加本地化支持 -->
+    <resource-bundle>messages.MacroCheckBundle</resource-bundle>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://github.com/tsdaer">tsdaer</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        Plugin for checking macro definitions in C/C++ code.
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 注册检查器 -->
+        <inspectionToolProvider implementation="core.macrocheck.inspections.MacroCheckInspectionRegistrar"/>
+
+        <projectService serviceImplementation="core.macrocheck.config.MacroCheckConfig"
+                        id="MacroCheckConfig"/>
+
+        <!-- 注册配置界面 -->
+        <projectConfigurable instance="core.macrocheck.ui.MacroCheckConfigurable"
+                             displayName="Macro Check"
+                             id="preferences.MacroCheck"
+                             parentId="tools"/>
+    </extensions>
+</idea-plugin>
